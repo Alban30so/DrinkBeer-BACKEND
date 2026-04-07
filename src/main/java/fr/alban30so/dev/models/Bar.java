@@ -14,6 +14,7 @@ public class Bar {
     private Long id;
 
     private String name;
+    private String address;
 
     // L'ID provenant de Keycloak pour faire le lien avec l'utilisateur authentifié
     @Column(unique = true, nullable = false)

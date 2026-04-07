@@ -7,5 +7,6 @@ import java.util.List;
 public class PublicBarDto {
     private Long id;
     private String name;
+    private String address;
     private List<PublicMenuDto> menu;
 }

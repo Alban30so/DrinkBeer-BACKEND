@@ -24,9 +24,10 @@ public class BarService {
                 .orElseThrow(() -> new RuntimeException("Aucun bar trouvé pour cet utilisateur"));
     }
 
-    public Bar createBar(String name, String keycloakId) {
+    public Bar createBar(String name, String address, String keycloakId) {
         Bar bar = new Bar();
         bar.setName(name);
+        bar.setAddress(address); // <-- On enregistre l'adresse
         bar.setOwnerKeycloakId(keycloakId);
         return barRepository.save(bar);
     }
@@ -49,6 +50,7 @@ public class BarService {
         PublicBarDto dto = new PublicBarDto();
         dto.setId(bar.getId());
         dto.setName(bar.getName());
+        dto.setAddress(bar.getAddress());
 
         List<PublicMenuDto> menu = new ArrayList<>();
 

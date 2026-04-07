@@ -20,9 +20,12 @@ public class BarController {
 
     // Créer un bar
     @PostMapping
-    public ResponseEntity<Bar> createBar(@RequestParam String name, Principal principal) {
+    public ResponseEntity<Bar> createBar(
+            @RequestParam String name,
+            @RequestParam String address,
+            Principal principal) {
         String keycloakId = (principal != null) ? principal.getName() : "fake-keycloak-id-pour-tester";//Debug sans keycloak
-        Bar newBar = barService.createBar(name, keycloakId);
+        Bar newBar = barService.createBar(name, address, keycloakId);
         return ResponseEntity.ok(newBar);
     }
 
