@@ -17,7 +17,7 @@ import java.util.Map;
 public class BeerCatalogService {
 
     private final BeerRepository beerRepository;
-    private final RestTemplate restTemplate; // Permet de faire des requêtes HTTP
+    private final RestTemplate restTemplate;
 
     @Transactional
     public Beer getOrFetchBeerFromCatalog(String catalogBeerId) {

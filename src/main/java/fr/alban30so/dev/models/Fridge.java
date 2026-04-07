@@ -21,6 +21,6 @@ public class Fridge {
     @JsonIgnore
     private Bar bar;
 
-    @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StockItem> stockItems;
 }

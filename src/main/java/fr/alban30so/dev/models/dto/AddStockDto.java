@@ -1,4 +1,4 @@
-package fr.alban30so.dev.dto;
+package fr.alban30so.dev.models.dto;
 
 import lombok.Data;
 

@@ -29,4 +29,7 @@ public class FridgeService {
         fridge.setBar(bar);
         return fridgeRepository.save(fridge);
     }
+    public void deleteFridge(Long fridgeId) {
+        fridgeRepository.deleteById(fridgeId);
+    }
 }

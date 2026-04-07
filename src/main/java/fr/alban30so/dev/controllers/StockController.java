@@ -1,6 +1,6 @@
 package fr.alban30so.dev.controllers;
 
-import fr.alban30so.dev.dto.AddStockDto;
+import fr.alban30so.dev.models.dto.AddStockDto;
 import fr.alban30so.dev.models.StockItem;
 import fr.alban30so.dev.services.StockService;
 import lombok.Data;

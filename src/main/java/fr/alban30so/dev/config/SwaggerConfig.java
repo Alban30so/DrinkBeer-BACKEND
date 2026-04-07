@@ -17,9 +17,9 @@ public class SwaggerConfig {
 
         return new OpenAPI()
                 .info(new Info()
-                        .title("API Gestion de Catalogue de Bières")
+                        .title("API drink.beer")
                         .version("1.0")
-                        .description("Documentation de l'API pour le TP Dev Web Avancé."))
+                        .description("Documentation de l'API pour DRINK.BEER."))
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(new Components()
                         .addSecuritySchemes(securitySchemeName,

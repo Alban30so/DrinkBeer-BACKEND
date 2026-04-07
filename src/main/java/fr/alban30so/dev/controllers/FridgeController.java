@@ -29,4 +29,12 @@ public class FridgeController {
         List<Fridge> fridges = fridgeService.getFridgesByBar(barId);
         return ResponseEntity.ok(fridges);
     }
+
+    @DeleteMapping("/bar/{barId}/{fridgeId}")
+    public ResponseEntity<Void> deleteFridge(
+            @PathVariable("barId") Long barId,
+            @PathVariable("fridgeId") Long fridgeId) {
+                fridgeService.deleteFridge(fridgeId);
+                return ResponseEntity.ok().build();
+    }
 }

@@ -1,6 +1,6 @@
 package fr.alban30so.dev.services;
 
-import fr.alban30so.dev.dto.AddStockDto;
+import fr.alban30so.dev.models.dto.AddStockDto;
 import fr.alban30so.dev.models.Fridge;
 import fr.alban30so.dev.models.StockItem;
 import fr.alban30so.dev.models.Beer;
@@ -90,17 +90,27 @@ public class StockService {
         stockItemRepository.deleteById(stockItemId);
     }
 
-    // Retirer de la quantité (ex: on a servi une pinte de 0.5L)
+    // Gestion du service des bière
     @Transactional
     public StockItem consumeBeer(Long stockItemId, Double consumedVolumeLiters) {
         StockItem stockItem = stockItemRepository.findById(stockItemId)
                 .orElseThrow(() -> new RuntimeException("Stock introuvable"));
 
+        // 1. Vérifier si on a assez de stock pour servir
         if (stockItem.getVolumeInLiters() < consumedVolumeLiters) {
             throw new RuntimeException("Pas assez de volume en stock !");
         }
 
-        stockItem.setVolumeInLiters(stockItem.getVolumeInLiters() - consumedVolumeLiters);
+        // 2. Calculer le nouveau volume
+        double newVolume = stockItem.getVolumeInLiters() - consumedVolumeLiters;
+
+        // 3. Règle métier : S'il reste moins de 25cl, on considère le contenant comme vide.
+        if (newVolume < 0.25) {
+            newVolume = 0.0;
+        }
+
+        stockItem.setVolumeInLiters(newVolume);
+
         return stockItemRepository.save(stockItem);
     }
 
